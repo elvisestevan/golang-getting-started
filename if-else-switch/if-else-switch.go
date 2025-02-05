@@ -6,6 +6,12 @@ import (
 	"time"
 )
 
+type Car struct {
+	Brand string
+	Model string
+	Year  int
+}
+
 func main() {
 	printDayOfTheWeek()
 
@@ -20,6 +26,28 @@ func main() {
 	} else {
 		fmt.Println("Passed! Congratulations!")
 	}
+
+	var car *Car
+
+	car = &Car{
+		Brand: "Toyota",
+		Model: "Corolla",
+		Year:  2019,
+	}
+
+	printCarInfo(car)
+	printCarInfo(nil)
+}
+
+func printCarInfo(car *Car) {
+	if car != nil && car.Brand != "" && car.Model != "" && car.Year > 0 {
+		fmt.Printf("Car brand: %s\n", car.Brand)
+		fmt.Printf("Car model: %s\n", car.Model)
+		fmt.Printf("Car year: %d\n", car.Year)
+		return
+	}
+	fmt.Println("No car information available.")
+	return
 }
 
 func printDayOfTheWeek() {
